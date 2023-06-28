@@ -3,7 +3,7 @@ import ReactDOM from "react-dom";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Footer from "home/Footer";
 import Header from "home/Header";
-
+import "remixicon/fonts/remixicon.css";
 import "./index.scss";
 import PDPContent from "./PDPContent";
 
