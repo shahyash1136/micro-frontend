@@ -1,19 +1,9 @@
 import React from "react";
-import ReactDOM from "react-dom";
+import { createRoot } from "react-dom/client";
 import "remixicon/fonts/remixicon.css";
-import Footer from "./Footer";
-import Header from "./Header";
-import HomeContent from "./HomeContent";
-
 import "./index.scss";
+import MainLayout from "./MainLayout";
 
-const App = () => (
-  <div className='text-3xl mx-auto max-w-6xl'>
-    <Header />
-    <div className='my-10'>
-      <HomeContent />
-    </div>
-    <Footer />
-  </div>
-);
-ReactDOM.render(<App />, document.getElementById("app"));
+const container = document.getElementById("app");
+const root = createRoot(container);
+root.render(<MainLayout />);
