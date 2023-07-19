@@ -1,10 +1,19 @@
+* {
+  margin: 0;
+  padding: 0;
+  font-family: "Poppins", sans-serif;
+}
+
 body {
   font-family: Arial, Helvetica, sans-serif;
+}
+
+.app__container {
+  min-height: calc(100vh - 128px);
 }
 
 .container {
   font-size: 3rem;
   margin: auto;
-  max-width: 800px;
-  margin-top: 20px;
+  max-width: 1500px;
 }
