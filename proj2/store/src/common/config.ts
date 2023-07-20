@@ -8,7 +8,7 @@ config.API_NAME = {
 }
 
 config.API_URL = {
-    pokemonList: `${config.API_BASE_URL}/${config.API_NAME.pokemon}?limit=1281`,
-    pokemon: `${config.API_BASE_URL}/${config.API_NAME.pokemon}/{{pokemonId}}`,
-    pokemonSpecies: `${config.API_BASE_URL}/${config.API_NAME.species}/{{pokemonId}}`
+    pokemonList: `${config.API_BASE_URL}${config.API_NAME.pokemon}?limit=1281`,
+    pokemon: `${config.API_BASE_URL}${config.API_NAME.pokemon}/{{pokemonId}}`,
+    pokemonSpecies: `${config.API_BASE_URL}${config.API_NAME.species}/{{pokemonId}}`
 }

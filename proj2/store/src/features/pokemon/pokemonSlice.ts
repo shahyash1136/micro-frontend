@@ -16,7 +16,6 @@ const initialState: pokemonState = {
 }
 
 export const fetchPokemon = createAsyncThunk('pokemon/fetchPokemon', async () => {
-
     try {
         const response = await axios.get(`${config.API_URL.pokemon}`);
         return response.data;

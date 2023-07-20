@@ -4,7 +4,6 @@ import { CopyAll } from '@mui/icons-material';
 
 const Footer = () => {
     const theme = useTheme();
-    console.log(theme);
     const [year, setYear] = useState<null | number>(null);
 
     useEffect(() => {

@@ -1,10 +1,12 @@
+import React from 'react';
 import { configureStore } from '@reduxjs/toolkit';
+import { ReactElement, ReactPortal } from 'react';
 import { Provider, TypedUseSelectorHook, useDispatch, useSelector } from 'react-redux';
-import { pokemonSlice } from '../features/pokemon/pokemonSlice';
+import { pokemonListSlice, fetchPokemonList } from '../features/pokemon/pokemonListSlice';
 
 const store = configureStore({
     reducer: {
-        pokemon: pokemonSlice.reducer
+        pokemonList: pokemonListSlice.reducer
     }
 })
 
@@ -18,11 +20,11 @@ export const useAppDispatch: () => AppDispatch = useDispatch
 export const useAppSelector: TypedUseSelectorHook<RootState> = useSelector
 
 export function useStore() {
-    const count = useSelector((state) => state.counter.count);
-    const dispatch = useDispatch();
+    const pokemonList = useAppSelector(state => state.pokemonList);
+    const dispatch = useAppDispatch();
     return {
-
-
+        pokemonList,
+        fetchPokemonList: () => dispatch(fetchPokemonList()),
     };
 }
 
@@ -37,6 +39,6 @@ type Props = {
     children: ReactNode
 }
 
-export function StoreProvider({ children }: Props) {
-    return <Provider store={store}> {children} < /Provider>;
+export const StoreProvider = ({ children }: any) => {
+    return <Provider store={store}> {children} </Provider>;
 }
