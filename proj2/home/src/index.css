@@ -9,11 +9,8 @@ body {
 }
 
 .app__container {
-  min-height: calc(100vh - 128px);
-}
-
-.container {
-  font-size: 3rem;
+  height: calc(100vh - 168px);
+  overflow: auto;
   margin: auto;
-  max-width: 1500px;
+  padding: 20px 15px;
 }

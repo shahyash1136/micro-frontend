@@ -15,7 +15,7 @@ const Footer = () => {
 
     return (
         <Box sx={{
-            background: theme.palette.primary.main,
+            background: theme.palette.primary[theme.palette.mode],
             minHeight: theme.mixins.toolbar,
             color: theme.palette.common.white,
             display: 'flex',
