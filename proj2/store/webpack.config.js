@@ -46,6 +46,7 @@ module.exports = (_, argv) => ({
       remotes: {},
       exposes: {
         "./store": "./src/app/store.tsx",
+        "./common": "./src/common/common.ts",
       },
       shared: {
         ...deps,

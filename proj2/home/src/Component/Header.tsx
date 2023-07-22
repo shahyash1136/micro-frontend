@@ -1,7 +1,8 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { styled, alpha } from '@mui/material/styles'
 import { AppBar, Box, IconButton, InputBase, Toolbar, Typography } from '@mui/material';
 import { MenuOutlined, SearchOutlined } from '@mui/icons-material';
+import { useStore } from "store/store";;
 
 const Search = styled('div')(({ theme }) => ({
     position: 'relative',
@@ -46,6 +47,18 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 }));
 
 const Header = () => {
+    const { searchValueHandler, searchValue } = useStore();
+    const [searchQuery, setSearchQuery] = useState<string>('');
+
+    const searchHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
+        setSearchQuery(e.target.value);
+        searchValueHandler(e.target.value)
+    }
+
+    console.log(searchValue)
+
+
+
     return (
         <Box sx={{ flexGrow: 1 }}>
             <AppBar position="static">
@@ -74,6 +87,8 @@ const Header = () => {
                         <StyledInputBase
                             placeholder="Search…"
                             inputProps={{ 'aria-label': 'search' }}
+                            value={searchQuery}
+                            onChange={searchHandler}
                         />
                     </Search>
                 </Toolbar>

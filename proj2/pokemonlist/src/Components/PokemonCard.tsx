@@ -1,12 +1,15 @@
 import React from 'react'
-import { Button, Paper, CardActions, CardContent, CardMedia, Typography, useTheme } from '@mui/material'
+import { Paper, CardContent, CardMedia, Typography, useTheme } from '@mui/material';
+import { pokemonNumFinder } from 'store/common';
+
 
 const PokemonCard = (props: any) => {
     const { data } = props;
     const theme = useTheme();
+    console.log()
 
-    let pokemonUrl = data.url;
-    let pokemonNum = pokemonUrl.split('/')[pokemonUrl.split('/').length - 2];
+    /* let pokemonUrl = data.url;
+    let pokemonNum = pokemonUrl.split('/')[pokemonUrl.split('/').length - 2]; */
 
 
     return (
@@ -17,14 +20,14 @@ const PokemonCard = (props: any) => {
                 alt={data.name}
                 width='auto'
                 height="140"
-                src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/${pokemonNum}.svg`}
+                src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/${pokemonNumFinder(data.url)}.svg`}
             />
             <CardContent sx={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
                 <Typography variant="h5" component="div" sx={{ textTransform: "capitalize" }}>
                     {data.name}
                 </Typography>
                 <Typography variant='h5' component="div">
-                    #{pokemonNum}
+                    #{pokemonNumFinder(data.url)}
                 </Typography>
             </CardContent>
         </Paper>

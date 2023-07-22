@@ -3,10 +3,12 @@ import { configureStore } from '@reduxjs/toolkit';
 import { ReactElement, ReactPortal } from 'react';
 import { Provider, TypedUseSelectorHook, useDispatch, useSelector } from 'react-redux';
 import { pokemonListSlice, fetchPokemonList } from '../features/pokemon/pokemonListSlice';
+import { searchSlice, searchValueHandler } from '../features/search/searchSlice';
 
 const store = configureStore({
     reducer: {
-        pokemonList: pokemonListSlice.reducer
+        pokemonList: pokemonListSlice.reducer,
+        search: searchSlice.reducer
     }
 })
 
@@ -21,10 +23,13 @@ export const useAppSelector: TypedUseSelectorHook<RootState> = useSelector
 
 export function useStore() {
     const pokemonList = useAppSelector(state => state.pokemonList);
+    const search = useAppSelector(state => state.search);
     const dispatch = useAppDispatch();
     return {
         pokemonList,
         fetchPokemonList: () => dispatch(fetchPokemonList()),
+        search,
+        searchValueHandler: (value: string) => dispatch(searchValueHandler(value))
     };
 }
 
