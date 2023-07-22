@@ -6,11 +6,6 @@ import { pokemonNumFinder } from 'store/common';
 const PokemonCard = (props: any) => {
     const { data } = props;
     const theme = useTheme();
-    console.log()
-
-    /* let pokemonUrl = data.url;
-    let pokemonNum = pokemonUrl.split('/')[pokemonUrl.split('/').length - 2]; */
-
 
     return (
         <Paper sx={{ cursor: 'pointer' }} elevation={2} onClick={() => console.log(data.name)}>

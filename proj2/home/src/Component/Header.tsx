@@ -1,8 +1,9 @@
 import React, { useState } from 'react'
 import { styled, alpha } from '@mui/material/styles'
-import { AppBar, Box, IconButton, InputBase, Toolbar, Typography } from '@mui/material';
+import { AppBar, Box, IconButton, InputBase, List, Paper, Toolbar, Typography } from '@mui/material';
 import { MenuOutlined, SearchOutlined } from '@mui/icons-material';
-import { useStore } from "store/store";;
+import { useStore } from "store/store";
+import PokemonList from './PokemonList';
 
 const Search = styled('div')(({ theme }) => ({
     position: 'relative',
@@ -35,35 +36,36 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
         padding: theme.spacing(1, 1, 1, 0),
         // vertical padding + font size from searchIcon
         paddingLeft: `calc(1em + ${theme.spacing(4)})`,
-        transition: theme.transitions.create('width'),
+        //transition: theme.transitions.create('width'),
         width: '100%',
-        [theme.breakpoints.up('sm')]: {
+        /* [theme.breakpoints.up('sm')]: {
             width: '12ch',
             '&:focus': {
                 width: '20ch',
             },
-        },
+        }, */
     },
 }));
 
 const Header = () => {
-    const { searchValueHandler, searchValue } = useStore();
-    const [searchQuery, setSearchQuery] = useState<string>('');
+    const { searchValueHandler, search, pokemonList } = useStore();
+
+    const [showSuggestion, setShowSuggestion] = useState<boolean>(false)
 
     const searchHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
-        setSearchQuery(e.target.value);
-        searchValueHandler(e.target.value)
+        searchValueHandler(e.target.value);
+        if (e.target.value.length >= 2) {
+            setShowSuggestion(true)
+        } else {
+            setShowSuggestion(false)
+        }
     }
-
-    console.log(searchValue)
-
-
 
     return (
         <Box sx={{ flexGrow: 1 }}>
             <AppBar position="static">
                 <Toolbar>
-                    <IconButton
+                    {/* <IconButton
                         size="large"
                         edge="start"
                         color="inherit"
@@ -71,7 +73,7 @@ const Header = () => {
                         sx={{ mr: 2 }}
                     >
                         <MenuOutlined />
-                    </IconButton>
+                    </IconButton> */}
                     <Typography
                         variant="h6"
                         noWrap
@@ -80,16 +82,30 @@ const Header = () => {
                     >
                         MUI
                     </Typography>
-                    <Search>
+                    <Search sx={{ position: 'relative' }}>
                         <SearchIconWrapper>
                             <SearchOutlined />
                         </SearchIconWrapper>
                         <StyledInputBase
                             placeholder="Search…"
                             inputProps={{ 'aria-label': 'search' }}
-                            value={searchQuery}
+                            value={search.searchValue}
                             onChange={searchHandler}
                         />
+                        {
+                            showSuggestion &&
+                            <Paper elevation={2} sx={{ width: '100%', bgcolor: 'background.paper', maxHeight: 350, overflow: 'auto', position: 'absolute' }}>
+                                <List>
+                                    {
+                                        pokemonList.pokemonList.filter((el: any) => el.name.toLowerCase().includes(search.searchValue)).map((el: any) => {
+                                            return (
+                                                <PokemonList data={el} key={el.name} setShowSuggestion={setShowSuggestion} />
+                                            )
+                                        })
+                                    }
+                                </List>
+                            </Paper>
+                        }
                     </Search>
                 </Toolbar>
             </AppBar>
