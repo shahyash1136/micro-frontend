@@ -1,9 +1,9 @@
 import React, { useEffect } from 'react';
 import Footer from "home/Footer";
 import Header from "home/Header";
-import Pokemon from 'pokemonlist/Pokemon';
+import Pokemon from 'pokemonlist/PokemonList';
 import PokemonDetails from 'pokemon/PokemonDetails';
-import { StoreProvider, useStore } from "store/store";
+import { useStore } from "store/store";
 import "home/AppCSS";
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 

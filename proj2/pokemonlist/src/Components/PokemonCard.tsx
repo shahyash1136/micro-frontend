@@ -1,14 +1,21 @@
 import React from 'react'
 import { Paper, CardContent, CardMedia, Typography, useTheme } from '@mui/material';
 import { pokemonNumFinder } from 'store/common';
+import { Link, useNavigate } from 'react-router-dom';
 
 
 const PokemonCard = (props: any) => {
     const { data } = props;
     const theme = useTheme();
+    const navigate = useNavigate();
+
+    const navigationHandler = (id: number) => {
+        navigate(`/pokemon/${id}`)
+    }
 
     return (
-        <Paper sx={{ cursor: 'pointer' }} elevation={2} onClick={() => console.log(data.name)}>
+        <Paper sx={{ cursor: 'pointer' }} elevation={2} onClick={() => navigationHandler(pokemonNumFinder(data.url))}>
+
             <CardMedia
                 component="img"
                 sx={{ objectFit: 'contain', backgroundColor: theme.palette.grey[100], padding: '8px 0' }}

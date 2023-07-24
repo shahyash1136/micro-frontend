@@ -1,47 +1,26 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { createRoot } from 'react-dom/client';
-import { Box, CircularProgress, Grid } from "@mui/material";
+import { StoreProvider } from 'store/store';
 import Header from 'home/Header';
 import Footer from 'home/Footer';
-import { StoreProvider, useStore } from "store/store";
 import "home/AppCSS";
-import PokemonCard from "./Components/PokemonCard";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import PokemonList from "pokemonlist/PokemonList";
+import PokemonDetails from 'pokemon/PokemonDetails';
+
 
 const App = () => {
-  const { pokemonList, fetchPokemonList } = useStore();
-
-  useEffect(() => {
-    fetchPokemonList();
-  }, [])
   return (
-    <>
+    <BrowserRouter>
       <Header />
       <div className="app__container">
-        {
-          pokemonList?.loading ?
-            <Box sx={{ display: 'flex' }}>
-              <CircularProgress />
-            </Box>
-            :
-            <Grid
-              container
-              spacing={2}
-              direction="row"
-              justifyContent="flex-start"
-              alignItems="flex-start"
-            >
-              {
-                pokemonList.pokemonList.map((el: any) => {
-                  return (<Grid item xs={2} sm={3} md={3} key={el.name} >
-                    <PokemonCard data={el} />
-                  </Grid>)
-                })
-              }
-            </Grid>
-        }
+        <Routes>
+          <Route path='/' element={<PokemonList />} />
+          <Route path="/pokemon/:id" element={<PokemonDetails />} />
+        </Routes>
       </div>
       <Footer />
-    </>
+    </BrowserRouter>
   )
 };
 

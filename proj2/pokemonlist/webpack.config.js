@@ -50,7 +50,7 @@ module.exports = (_, argv) => ({
         store: "store@http://localhost:3004/remoteEntry.js",
       },
       exposes: {
-        "./Pokemon": "./src/Components/PokemonCard.tsx",
+        "./PokemonList": "./src/Components/PokemonList.tsx",
       },
       shared: {
         ...deps,

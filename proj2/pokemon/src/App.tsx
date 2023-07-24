@@ -2,7 +2,7 @@ import React from "react";
 import { createRoot } from 'react-dom/client';
 import Header from "home/Header";
 import Footer from "home/Footer";
-import { StoreProvider, useStore } from "store/store";
+import { StoreProvider } from "store/store";
 import { BrowserRouter, Route, Routes } from "react-router-dom"
 import PokemonDetails from "./Components/PokemonDetails/PokemonDetails";
 import "home/AppCSS";
