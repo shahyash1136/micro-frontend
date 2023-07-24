@@ -4,11 +4,16 @@ import { ReactElement, ReactPortal } from 'react';
 import { Provider, TypedUseSelectorHook, useDispatch, useSelector } from 'react-redux';
 import { pokemonListSlice, fetchPokemonList } from '../features/pokemon/pokemonListSlice';
 import { searchSlice, searchValueHandler } from '../features/search/searchSlice';
+import { fetchPokemon, pokemonSlice } from '../features/pokemon/pokemonSlice';
+import { fetchPokemonSpecies, speciesSlice } from '../features/species/speciesSlice';
+
 
 const store = configureStore({
     reducer: {
         pokemonList: pokemonListSlice.reducer,
-        search: searchSlice.reducer
+        search: searchSlice.reducer,
+        pokemon: pokemonSlice.reducer,
+        species: speciesSlice.reducer
     }
 })
 
@@ -24,12 +29,18 @@ export const useAppSelector: TypedUseSelectorHook<RootState> = useSelector
 export function useStore() {
     const pokemonList = useAppSelector(state => state.pokemonList);
     const search = useAppSelector(state => state.search);
+    const pokemon = useAppSelector(state => state.pokemon);
+    const species = useAppSelector(state => state.species);
     const dispatch = useAppDispatch();
     return {
         pokemonList,
         fetchPokemonList: () => dispatch(fetchPokemonList()),
         search,
-        searchValueHandler: (value: string) => dispatch(searchValueHandler(value))
+        searchValueHandler: (value: string) => dispatch(searchValueHandler(value)),
+        pokemon,
+        fetchPokemon: (id: string) => dispatch(fetchPokemon(id)),
+        species,
+        fetchPokemonSpecies: (id: string) => dispatch(fetchPokemonSpecies(id))
     };
 }
 

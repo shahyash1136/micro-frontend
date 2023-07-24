@@ -1,23 +1,22 @@
-import { createSlice, createAsyncThunk, PayloadAction } from '@reduxjs/toolkit';
-import { RootState } from '../../app/store';
+import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import { config } from '../../common/config';
 import axios from 'axios'
 
 export interface pokemonState {
     loading: boolean;
-    pokemon: any | null;
+    pokemon: any | {};
     error: string | undefined;
 }
 
 const initialState: pokemonState = {
     loading: false,
-    pokemon: null,
+    pokemon: {},
     error: undefined,
 }
 
-export const fetchPokemon = createAsyncThunk('pokemon/fetchPokemon', async () => {
+export const fetchPokemon = createAsyncThunk('pokemon/fetchPokemon', async (id: string) => {
     try {
-        const response = await axios.get(`${config.API_URL.pokemon}`);
+        const response = await axios.get(`${config.API_URL.pokemon.replace('{{pokemonId}}', id)}`);
         return response.data;
     } catch (error) {
         console.error(error);
@@ -25,7 +24,7 @@ export const fetchPokemon = createAsyncThunk('pokemon/fetchPokemon', async () =>
 })
 
 export const pokemonSlice = createSlice({
-    name: 'pokemon',
+    name: 'pokemonSlice',
     initialState,
     reducers: {},
     extraReducers: (builder) => {
@@ -44,6 +43,4 @@ export const pokemonSlice = createSlice({
     }
 });
 
-
-//export const pokemonSelector = (state: RootState) => state.pokemonReducer;
 export default pokemonSlice.reducer;

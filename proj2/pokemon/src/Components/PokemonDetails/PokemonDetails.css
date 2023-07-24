@@ -1,0 +1,200 @@
+.pokemon {
+  background: white;
+  border-radius: 8px;
+  padding: 15px;
+}
+.pokemon em {
+  font-style: normal;
+}
+.pokemon__header {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -moz-flex;
+  display: -ms-flexbox;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.pokemon__rank {
+  font-family: "Roboto", sans-serif;
+  font-weight: 500;
+  font-size: 25px;
+}
+.pokemon__rank em {
+  font-style: normal;
+}
+.pokemon__type {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+.pokemon__type span {
+  padding: 5px 15px;
+  font-family: "Roboto", sans-serif;
+  font-weight: 500;
+  text-transform: capitalize;
+  background: red;
+  text-align: center;
+  -webkit-border-radius: 16px;
+  -moz-border-radius: 16px;
+  -ms-border-radius: 16px;
+  -o-border-radius: 16px;
+  border-radius: 16px;
+  font-size: 14px;
+  color: white;
+  min-width: 100px;
+}
+.pokemon__type span:not(:last-child) {
+  margin-right: 15px;
+}
+.pokemon__body {
+  display: flex;
+  align-items: center;
+  justify-self: start;
+}
+.pokemon__body--left {
+  flex: 0 0 40%;
+  width: 40%;
+  padding: 0 10px;
+  text-align: center;
+}
+.pokemon__body--right {
+  flex: 0 0 60%;
+  width: 60%;
+}
+.pokemon__imgBox img {
+  width: 200px;
+  height: auto;
+}
+.pokemon__name {
+  text-transform: uppercase;
+  margin: 10px 0;
+}
+.pokemon__stats {
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  text-align: center;
+  flex-wrap: wrap;
+}
+.pokemon__statsBox {
+  flex: 0 0 16.66%;
+  width: 16.66%;
+  padding: 0 10px;
+  margin: 10px 0;
+  text-transform: capitalize;
+}
+.pokemon__statsBox .svgBox .circle-bg {
+  fill: none;
+  stroke: rgba(0, 0, 0, 0.1);
+  stroke-width: 1;
+}
+.pokemon__statsBox .svgBox .circle {
+  fill: none;
+  stroke-width: 1;
+  stroke-linecap: round;
+  animation: progress 1s ease-in-out;
+}
+@-webkit-keyframes progress {
+  0% {
+    stroke-dasharray: 0 100;
+  }
+}
+@-moz-keyframes progress {
+  0% {
+    stroke-dasharray: 0 100;
+  }
+}
+@-ms-keyframes progress {
+  0% {
+    stroke-dasharray: 0 100;
+  }
+}
+@-o-keyframes progress {
+  0% {
+    stroke-dasharray: 0 100;
+  }
+}
+@keyframes progress {
+  0% {
+    stroke-dasharray: 0 100;
+  }
+}
+.pokemon__statsBox .svgBox .percentage {
+  fill: #666;
+  font-family: sans-serif;
+  font-size: 0.5em;
+  text-anchor: middle;
+}
+.pokemon__head {
+  text-align: center;
+  margin: 10px 0;
+}
+.pokemon__profileBox {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+}
+.pokemon__profile--left,
+.pokemon__profile--right {
+  flex: 0 0 50%;
+  width: 50%;
+}
+.pokemon__profileCard {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.pokemon__profileCard:not(:last-child) {
+  margin-bottom: 15px;
+}
+.pokemon__profileCard .left {
+  margin-right: 8px;
+  flex: 0 0 50%;
+  width: 50%;
+  /* padding-right: 15px;
+  padding-left: 15px; */
+  text-align: right;
+  font-family: "Roboto", sans-serif;
+  font-weight: 400;
+  text-transform: capitalize;
+}
+.pokemon__profileCard .right {
+  display: flex;
+  flex: 0 0 50%;
+  width: 50%;
+  align-items: center;
+  justify-content: flex-start;
+  padding-right: 15px;
+  padding-left: 15px;
+  font-family: "Roboto", sans-serif;
+  font-weight: 700;
+}
+.pokemon__profileCard .right span {
+  text-transform: capitalize;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+.pokemon__profileCard .right span em {
+  margin-left: 2px;
+  text-transform: lowercase;
+}
+.pokemon__profileCard .right span em.icon {
+  margin-left: 0px;
+  margin-right: 5px;
+  width: 25px;
+  height: 25px;
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+.pokemon__profileCard .right span em.icon.female {
+  /* background-image: url("../../assets/images/female.png"); */
+}
+.pokemon__profileCard .right span em.icon.male {
+  /* background-image: url("../../assets/images/male.png"); */
+}
+.pokemon__profileCard .right span:not(:last-child) {
+  margin-right: 10px;
+}

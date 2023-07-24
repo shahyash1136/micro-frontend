@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { styled, alpha } from '@mui/material/styles'
 import { AppBar, Box, IconButton, InputBase, List, Paper, Toolbar, Typography } from '@mui/material';
 import { MenuOutlined, SearchOutlined } from '@mui/icons-material';
@@ -48,9 +48,16 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 }));
 
 const Header = () => {
-    const { searchValueHandler, search, pokemonList } = useStore();
+    const { searchValueHandler, search, pokemonList, fetchPokemonList } = useStore();
 
-    const [showSuggestion, setShowSuggestion] = useState<boolean>(false)
+    const [showSuggestion, setShowSuggestion] = useState<boolean>(false);
+
+    useEffect(() => {
+        if (pokemonList.pokemonList.length === 0) {
+            fetchPokemonList()
+        }
+    }, [])
+
 
     const searchHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
         searchValueHandler(e.target.value);
@@ -65,15 +72,6 @@ const Header = () => {
         <Box sx={{ flexGrow: 1 }}>
             <AppBar position="static">
                 <Toolbar>
-                    {/* <IconButton
-                        size="large"
-                        edge="start"
-                        color="inherit"
-                        aria-label="open drawer"
-                        sx={{ mr: 2 }}
-                    >
-                        <MenuOutlined />
-                    </IconButton> */}
                     <Typography
                         variant="h6"
                         noWrap

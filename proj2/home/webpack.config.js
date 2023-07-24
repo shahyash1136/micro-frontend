@@ -45,6 +45,8 @@ module.exports = (_, argv) => ({
       filename: "remoteEntry.js",
       remotes: {
         home: "home@http://localhost:3000/remoteEntry.js",
+        pokemonlist: "pokemonlist@http://localhost:3001/remoteEntry.js",
+        pokemon: "pokemon@http://localhost:3002/remoteEntry.js",
         store: "store@http://localhost:3004/remoteEntry.js",
       },
       exposes: {
