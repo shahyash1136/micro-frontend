@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { styled, alpha } from '@mui/material/styles'
 import { AppBar, Box, IconButton, InputBase, List, Paper, Toolbar, Typography } from '@mui/material';
-import { MenuOutlined, SearchOutlined } from '@mui/icons-material';
+import { SearchOutlined } from '@mui/icons-material';
 import { useStore } from "store/store";
 import PokemonList from './PokemonList';
 
